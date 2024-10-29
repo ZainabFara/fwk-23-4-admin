@@ -12,8 +12,8 @@ const addUser = (user) => {
     user.id = uuidv4(); 
     return new Promise((resolve, reject) => {
         db.query(
-            "INSERT INTO users (name, password, email) VALUES (?, ?, ?)", 
-            [user.name, user.password, user.email], 
+            "INSERT INTO users (name, password, email, uuid) VALUES (?, ?, ?, ?)", 
+            [user.name, user.password, user.email, user.id], 
             (err, results) => {
                 if (err) return reject(err);
                 resolve({ ...user }); 
