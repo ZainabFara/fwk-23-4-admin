@@ -20,7 +20,7 @@ exports.addUser = (user) => {
     user.id = uuidv4();
     return new promise((resolve, reject) => {
         db.query(
-            "INSERT INTO users(name, password, email) VALUES()",
+            "INSERT INTO users(name, password, email) VALUES(?, ?, ?)",
             [user.name , user.password, user.email],
             (err, results) => {
                 if(err) return reject(err);
@@ -121,3 +121,11 @@ exports.removeUserFromGroup = (userId, groupName) => {
 exports.getUserByUsername = (username) => {
     return users.find(user => user.username === username);
 };
+
+db.end((err) => {
+    if (err) {
+        console.error("Error closing the connection:", err);
+    } else {
+        console.log("Database connection closed.");
+    }
+});
