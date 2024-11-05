@@ -109,7 +109,7 @@ router.put('/users/:id', adminController.updateUser);
  *       404:
  *         description: User not found.
  */
-router.delete('/users/:id', adminController.deleteUser);
+router.delete('/users/:name', adminController.deleteUser);
 
 /**
  * @swagger
