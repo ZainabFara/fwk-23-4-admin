@@ -9,7 +9,7 @@ const SAME_SITE_TYPES = {
     NONE: "None"
 };
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 const HOST = process.env.HOST || 'localhost';
 const SECURE = process.env.NODE_ENV === 'production';
 const HTTP_ONLY = process.env.HTTP_ONLY || false;
