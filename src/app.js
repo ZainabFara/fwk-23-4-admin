@@ -1,5 +1,5 @@
 const express = require('express');
-const { AUTH, AUTH_TYPES } = require('./config');
+const { API_DOCS, CORS_ALLOWED_ORIGINS } = require('./config');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const app = express();
