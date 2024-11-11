@@ -16,11 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "cross-env": "^7.0.3",
-=======
     "@kunalnagarco/healthie": "^4.2.8",
->>>>>>> dc9dcf66d8b968656cac25c667e88b61e2c57a17
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "helmet": "^8.0.0",
