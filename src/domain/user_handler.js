@@ -20,8 +20,8 @@ exports.addUser = (user) => {
   user.id = uuidv4();
   return new Promise((resolve, reject) => {
     db.query(
-      "INSERT INTO users(name, password, email, uuid) VALUES(?, ?, ?, ?)",
-      [user.name, user.password, user.email, user.id],
+      "INSERT INTO users(username, password, email, uuid, role) VALUES(?, ?, ?, ?, ?)",
+      [user.name, user.password, user.email, user.id, user.role],
       (err, results) => {
         if (err) return reject(err);
         resolve({ ...user });
@@ -69,73 +69,73 @@ exports.deleteUser = (name) => {
       });
 };
 
-exports.addGroup = (groupName) => {
-  if (!groups[groupName]) {
-    groups[groupName] = [];
-    return true;
-  }
-  return false;
-};
+// exports.addGroup = (groupName) => {
+//   if (!groups[groupName]) {
+//     groups[groupName] = [];
+//     return true;
+//   }
+//   return false;
+// };
 
-exports.listGroups = () => {
-  return Object.keys(groups).map((groupName) => ({
-    name: groupName,
-    members: groups[groupName].map((userId) => this.getUser(userId)),
-  }));
-};
+// exports.listGroups = () => {
+//   return Object.keys(groups).map((groupName) => ({
+//     name: groupName,
+//     members: groups[groupName].map((userId) => this.getUser(userId)),
+//   }));
+// };
 
-exports.deleteGroup = (groupName) => {
-  if (groups.hasOwnProperty(groupName)) {
-    delete groups[groupName];
-    return true;
-  }
-  return false;
-};
+// exports.deleteGroup = (groupName) => {
+//   if (groups.hasOwnProperty(groupName)) {
+//     delete groups[groupName];
+//     return true;
+//   }
+//   return false;
+// };
 
-const getUserGroups = (userId) => {
-  return Object.keys(groups).filter((groupName) =>
-    groups[groupName].includes(userId)
-  );
-};
+// const getUserGroups = (userId) => {
+//   return Object.keys(groups).filter((groupName) =>
+//     groups[groupName].includes(userId)
+//   );
+// };
 
-exports.addUserToGroup = (userId, groupName) => {
-  if (!groups[groupName]) {
-    console.log("Group does not exist.");
-    return false;
-  }
+// exports.addUserToGroup = (userId, groupName) => {
+//   if (!groups[groupName]) {
+//     console.log("Group does not exist.");
+//     return false;
+//   }
 
-  const userExists = users.some((user) => user.id === userId);
-  if (!userExists) {
-    console.log("User does not exist.");
-    return false;
-  }
+//   const userExists = users.some((user) => user.id === userId);
+//   if (!userExists) {
+//     console.log("User does not exist.");
+//     return false;
+//   }
 
-  if (groups[groupName].includes(userId)) {
-    console.log("User already in the group.");
-    return false;
-  }
+//   if (groups[groupName].includes(userId)) {
+//     console.log("User already in the group.");
+//     return false;
+//   }
 
-  groups[groupName].push(userId);
-  return true;
-};
+//   groups[groupName].push(userId);
+//   return true;
+// };
 
-exports.removeUserFromGroup = (userId, groupName) => {
-  if (groups[groupName]) {
-    let initialLength = groups[groupName].length;
-    groups[groupName] = groups[groupName].filter((id) => id !== userId);
-    return initialLength !== groups[groupName].length;
-  }
-  return false;
-};
+// exports.removeUserFromGroup = (userId, groupName) => {
+//   if (groups[groupName]) {
+//     let initialLength = groups[groupName].length;
+//     groups[groupName] = groups[groupName].filter((id) => id !== userId);
+//     return initialLength !== groups[groupName].length;
+//   }
+//   return false;
+// };
 
-exports.getUserByUsername = (username) => {
-  return users.find((user) => user.username === username);
-};
+// exports.getUserByUsername = (username) => {
+//   return users.find((user) => user.username === username);
+// };
 
-db.end((err) => {
-  if (err) {
-    console.error("Error closing the connection:", err);
-  } else {
-    console.log("Database connection closed.");
-  }
-});
+// db.end((err) => {
+//   if (err) {
+//     console.error("Error closing the connection:", err);
+//   } else {
+//     console.log("Database connection closed.");
+//   }
+// });

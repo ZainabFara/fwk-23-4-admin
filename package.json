@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest  --group=-component --group=-integration",
-    "test:component": "jest --group=component",
-    "test:integration": "jest --group=integration",
+    "test": "jest",
+    "test:component": "jest",
+    "test:integration": "jest",
     "main": "node ./service.js",
     "dev": "cross-env NODE_ENV=development node --watch ./src/service.js",
     "start": "node ./src/service.js",
@@ -16,8 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cross-env": "^7.0.3",
     "@kunalnagarco/healthie": "^4.2.8",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "helmet": "^8.0.0",
@@ -25,5 +25,9 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "uuid": "^11.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
